@@ -76,7 +76,7 @@ class Registerutama extends StatelessWidget {
             textColor: Colors.white,
             radius: 8,
             elevation: 0,
-            onPressed: () {Get.toNamed('/1');},
+            onPressed: () {Get.toNamed('/');},
           ),
           Expanded(child: Container()),
         ],
