@@ -20,7 +20,7 @@ class Loginutama extends StatelessWidget {
           myTextField(
             hintText: 'username',
             isObscure: false,
-            textStyle: const TextStyle(fontSize: 10),
+            textStyle: const TextStyle(fontSize: 15),
             rad: 8,
             controller: usernameController,
             textInputType: TextInputType.text,
@@ -29,7 +29,7 @@ class Loginutama extends StatelessWidget {
           myTextField(
             hintText: 'password',
             isObscure: true,
-            textStyle: const TextStyle(fontSize: 10),
+            textStyle: const TextStyle(fontSize: 15),
             rad: 8,
             controller: passwordController,
             textInputType: TextInputType.text,

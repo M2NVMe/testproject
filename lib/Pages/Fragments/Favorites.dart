@@ -9,9 +9,6 @@ class Favorites extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Favorites"),
-      ),
       body: Column(
         children: [
           Expanded(
@@ -28,6 +25,7 @@ class Favorites extends StatelessWidget {
                 itemCount: datas.favorites.length,
                 itemBuilder: (context, index) {
                   final item = datas.favorites[index];
+                  datas.loadFavorites();
                   return Card(
                     color: Colors.grey.shade100,
                     child: ListTile(

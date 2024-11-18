@@ -30,15 +30,21 @@ class SportsController extends GetxController {
     return dbHelper.favorites.any((fav) => fav['title'] == title);
   }
 
-  /// Toggle favorite status for a league
   Future<void> toggleFavorite(Map<String, dynamic> item) async {
     if (isFavorite(item['title'])) {
       final fav = dbHelper.favorites.firstWhere((fav) => fav['title'] == item['title']);
       await dbHelper.deleteFav(fav['id']);
       Get.snackbar('Removed from Favorites', item['title']);
     } else {
-      await dbHelper.addFav(item);
+      final newFavorite = {
+        'image': item['image'],
+        'title': item['title'],
+        'description': item['description'],
+      };
+      await dbHelper.addFav(newFavorite);
       Get.snackbar('Added to Favorites', item['title']);
     }
+    await dbHelper.loadFavorites();
   }
+
 }
