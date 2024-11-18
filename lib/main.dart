@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:testproject/LoginUtama.dart';
 import 'package:testproject/Pages/landingpage.dart';
+import 'package:testproject/RegisterUtama.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => Loginutama()),
+        GetPage(name: '/2', page: () => Registerutama()),
         GetPage(name: '/home', page:() => Landingpage()),
       ],
     );

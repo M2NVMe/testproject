@@ -6,7 +6,7 @@ class myTextField extends StatelessWidget {
   final TextStyle textStyle;
   final bool isObscure;
   final double rad;
-  final TextEditingController controller;
+  final TextEditingController? controller;
 
   const myTextField({super.key, required this.hintText, required this.isObscure, required this.textStyle, required this.rad, required this.controller, required this.textInputType});
 

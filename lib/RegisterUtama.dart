@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:testproject/Controllers/logincontrol.dart';
+import 'package:testproject/Controllers/registercontrol.dart';
 import 'package:testproject/Reuses/myButton.dart';
 import 'package:testproject/Reuses/myTextfield.dart';
 
-class Loginutama extends StatelessWidget {
-  Loginutama({super.key});
+class Registerutama extends StatelessWidget {
+  Registerutama({super.key});
 
-  final LoginController loginController = Get.put(LoginController());
+  final RegisterController Controller = Get.put(RegisterController());
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController full_name = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class Loginutama extends StatelessWidget {
           myTextField(
             hintText: 'username',
             isObscure: false,
-            textStyle: const TextStyle(fontSize: 10),
+            textStyle: const TextStyle(fontSize:20),
             rad: 8,
             controller: usernameController,
             textInputType: TextInputType.text,
@@ -29,33 +32,51 @@ class Loginutama extends StatelessWidget {
           myTextField(
             hintText: 'password',
             isObscure: true,
-            textStyle: const TextStyle(fontSize: 10),
+            textStyle: const TextStyle(fontSize: 20),
             rad: 8,
             controller: passwordController,
             textInputType: TextInputType.text,
           ),
           const SizedBox(height: 25),
-          Expanded(child: Container()), // Spacer at the bottom
+          myTextField(
+            hintText: 'full name',
+            isObscure: false,
+            textStyle: const TextStyle(fontSize: 20),
+            rad: 8,
+            controller: full_name,
+            textInputType: TextInputType.text,
+          ),
+          const SizedBox(height: 25),
+          myTextField(
+            hintText: 'email',
+            isObscure: false,
+            textStyle: const TextStyle(fontSize: 20),
+            rad: 8,
+            controller: email,
+            textInputType: TextInputType.text,
+          ),
+          const SizedBox(height: 25),
+          Expanded(child: Container()),
           Obx(() => myButton(
-            textButton: const Text("Login"),
-            backgroundColor: Colors.blueGrey,
-            textColor: Colors.white,
-            radius: 8,
-            elevation: 0,
-            onPressed: loginController.isLoading.value
-                ? null
-                : () {
-              loginController.LoggerIn(
-                  usernameController, passwordController);
-            },
-          )),
-          myButton(
             textButton: const Text("Register"),
             backgroundColor: Colors.blueGrey,
             textColor: Colors.white,
             radius: 8,
             elevation: 0,
-            onPressed: () {Get.toNamed('/2');},
+            onPressed: Controller.isLoading.value
+                ? null
+                : () {
+              Controller.handleRegister(
+                  usernameController, passwordController, full_name, email);
+            },
+          ),),
+          myButton(
+            textButton: const Text("Login"),
+            backgroundColor: Colors.blueGrey,
+            textColor: Colors.white,
+            radius: 8,
+            elevation: 0,
+            onPressed: () {Get.toNamed('/1');},
           ),
           Expanded(child: Container()),
         ],
