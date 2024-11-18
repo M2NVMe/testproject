@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -79,6 +80,7 @@ class DatabaseHelper extends GetxController {
     ''');
     favorites.clear(); // Clear the in-memory list
     print("Database has been hard reset.");
+    Get.snackbar("BOOM!!!!!", "Successfully nuked the database, well done!");
   }
 
 }
