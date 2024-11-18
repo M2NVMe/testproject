@@ -37,8 +37,19 @@ class Home extends StatelessWidget {
                               title: Text(post.strTeam),
                               subtitle: Text(post.strLeague),
                               onTap: () {
-                                Get.snackbar(post.strTeam, post.strLeague);
+                                controller.toggleFavorite({
+                                  'image': post.strBadge,
+                                  'title': post.strTeam,
+                                  'description': post.strLeague,
+                                });
                               },
+                              trailing: Obx(() {
+                                final isFav = controller.isFavorite(post.strTeam);
+                                return Icon(
+                                  isFav ? Icons.favorite : Icons.favorite_border,
+                                  color: isFav ? Colors.red : Colors.grey,
+                                );
+                              }),
                             ),
                           ),
                         );
