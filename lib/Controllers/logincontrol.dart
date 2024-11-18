@@ -28,6 +28,7 @@ class LoginController extends GetxController {
     }
   }
 
+  //ini fungsinya, biar ga ribet di uinya
   Future<void> LoggerIn(
       TextEditingController usernameController, TextEditingController passwordController) async {
     if (isLoading.value) return;

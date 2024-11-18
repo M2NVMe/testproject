@@ -27,6 +27,7 @@ class RegisterController extends GetxController {
     }
   }
 
+  //ini fungsinya, biar ga ribet di uinya
   Future<void> handleRegister(
       TextEditingController usernameController,
       TextEditingController passwordController,
