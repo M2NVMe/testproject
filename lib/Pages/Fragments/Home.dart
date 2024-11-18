@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:testproject/Controllers/RegularControllers/sportscontroller.dart';
+import 'package:testproject/Pages/Detailed.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
@@ -42,6 +43,9 @@ class Home extends StatelessWidget {
                                   'title': post.strTeam,
                                   'description': post.strLeague,
                                 });
+                              },
+                              onLongPress: () {
+                                Get.to(() => DetailScreen(post: post));
                               },
                               trailing: Obx(() {
                                 final isFav = controller.isFavorite(post.strTeam);
