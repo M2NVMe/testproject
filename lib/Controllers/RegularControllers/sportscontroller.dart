@@ -12,7 +12,7 @@ class SportsController extends GetxController {
   void onInit() {
     super.onInit();
     fetchPosts();
-    dbHelper.loadFavorites(); // Load favorites on initialization
+    dbHelper.loadFavorites();
   }
 
   void fetchPosts() async {

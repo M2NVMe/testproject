@@ -5,10 +5,10 @@ import 'package:testproject/Reuses/myButton.dart';
 
 class Favorites extends StatelessWidget {
   Favorites({super.key});
-  final DatabaseHelper datas = Get.put(DatabaseHelper());
 
-  @override
   Widget build(BuildContext context) {
+    final DatabaseHelper datas = Get.put(DatabaseHelper());
+    datas.loadFavorites();
     return Scaffold(
       body: Column(
         children: [
