@@ -24,38 +24,32 @@ class Favorites extends StatelessWidget {
                   ),
                 );
               }
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14),
-                child: ListView.builder(
-                  itemCount: datas.favorites.length,
-                  itemBuilder: (context, index) {
-                    final item = datas.favorites[index];
-                    return ClipRRect(
-                      child: Card(
-                        elevation: 0,
-                        color: Colors.grey.shade100,
-                        child: ListTile(
-                          leading: Image.network(
-                            item['image'],
-                            width: 70,
-                            height: 70,
-                          ),
-                          title: Text(item['title']),
-                          subtitle: Text(item['description']),
-                          trailing: IconButton(
-                            icon: Icon(Icons.delete, color: Colors.red),
-                            onPressed: () {
-                              if (item['id'] != null) {
-                                datas.deleteFav(item['id']);
-                                Get.snackbar('Removed from Favorites', item['title']);
-                              }
-                            },
-                          ),
-                        ),
+              return ListView.builder(
+                itemCount: datas.favorites.length,
+                itemBuilder: (context, index) {
+                  final item = datas.favorites[index];
+                  return Card(
+                    color: Colors.grey.shade100,
+                    child: ListTile(
+                      leading: Image.network(
+                        item['image'],
+                        width: 70,
+                        height: 70,
                       ),
-                    );
-                  },
-                ),
+                      title: Text(item['title']),
+                      subtitle: Text(item['description']),
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete, color: Colors.red),
+                        onPressed: () {
+                          if (item['id'] != null) {
+                            datas.deleteFav(item['id']);
+                            Get.snackbar('Removed from Favorites', item['title']);
+                          }
+                        },
+                      ),
+                    ),
+                  );
+                },
               );
             }),
           ),
