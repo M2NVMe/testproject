@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:testproject/Controllers/registerapi.dart';
+import 'package:testproject/Controllers/Apis/registerapi.dart';
 
 class RegisterController extends GetxController {
   var isLoading = false.obs;

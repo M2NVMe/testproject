@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:testproject/Controllers/logincontrol.dart';
+import 'package:testproject/Controllers/RegularControllers/logincontrol.dart';
 import 'package:testproject/Reuses/myButton.dart';
 import 'package:testproject/Reuses/myTextfield.dart';
 

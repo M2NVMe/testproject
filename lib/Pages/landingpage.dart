@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:testproject/Controllers/DashborKontrol.dart';
+import 'package:testproject/Controllers/RegularControllers/DashborKontrol.dart';
 import 'package:testproject/Pages/Fragments/Favorites.dart';
 import 'package:testproject/Pages/Fragments/Home.dart';
 import 'package:testproject/Pages/Fragments/Profile.dart';
