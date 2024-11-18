@@ -46,15 +46,16 @@ class DatabaseHelper extends GetxController {
   // Load favorites
   Future<void> loadFavorites() async {
     var dbClient = await db;
-    List<Map<String, dynamic>> queryResult = await dbClient!.query('favorites');
-    favorites.assignAll(queryResult); // Update the observable list
+    final data = await dbClient!.query('favorites');
+    print("Favorites loaded: $data");
+    favorites.assignAll(data);
   }
 
   // Delete a favorite
   Future<void> deleteFav(int id) async {
     var dbClient = await db;
     await dbClient!.delete('favorites', where: 'id = ?', whereArgs: [id]);
-    await loadFavorites(); // Reload after deleting
+    await loadFavorites();
   }
 
   // Clear all favorites
@@ -63,4 +64,21 @@ class DatabaseHelper extends GetxController {
     await dbClient!.delete('favorites');
     await loadFavorites(); // Reload after clearing
   }
+
+  //ONLY USE THIS WHEN SHIT HAS BLOWN UP INTO PIECES, DO NOT USE ON PRODUCTION, THIS IS A QUICK FIX FOR PRACTICALLY ANYTHING
+  Future<void> HARDRESET() async {
+    var dbClient = await db;
+    await dbClient!.execute('DROP TABLE IF EXISTS favorites');
+    await dbClient.execute('''
+      CREATE TABLE favorites(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        image TEXT,
+        title TEXT,
+        description TEXT
+      )
+    ''');
+    favorites.clear(); // Clear the in-memory list
+    print("Database has been hard reset.");
+  }
+
 }
