@@ -24,8 +24,6 @@ class SportsController extends GetxController {
       ld(false);
     }
   }
-
-  /// Check if a league is a favorite by its title
   bool isFavorite(String title) {
     return dbHelper.favorites.any((fav) => fav['title'] == title);
   }
@@ -43,7 +41,7 @@ class SportsController extends GetxController {
       });
       Get.snackbar('Added to Favorites', item['title']);
     }
-    await dbHelper.loadFavorites(); // Always reload the favorites list
-    update(); // Notify listeners
+    await dbHelper.loadFavorites();
+    update();
   }
 }
