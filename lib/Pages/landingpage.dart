@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:testproject/Controllers/Database/FavoritesDatabase.dart';
 import 'package:testproject/Controllers/RegularControllers/DashborKontrol.dart';
+import 'package:testproject/Controllers/RegularControllers/sportscontroller.dart';
 import 'package:testproject/Pages/Fragments/Favorites.dart';
 import 'package:testproject/Pages/Fragments/Home.dart';
 import 'package:testproject/Pages/Fragments/Profile.dart';
@@ -11,6 +13,8 @@ class Landingpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SportsController sportsController = Get.put(SportsController(), permanent: true);
+    final DatabaseHelper databaseHelper = Get.put(DatabaseHelper(), permanent: true);
     final UtamaController controller = Get.put(UtamaController());
     final List<Widget> pages = [
       Home(),
@@ -47,5 +51,13 @@ class Landingpage extends StatelessWidget {
         ),
       ),
     );
+  }
+  void changeMenu(int index) {
+    final UtamaController controller = Get.put(UtamaController());
+    controller.selectedindex.value = index;
+    if (index == 1) {
+      final databaseHelper = Get.find<DatabaseHelper>();
+      databaseHelper.loadFavorites();
+    }
   }
 }

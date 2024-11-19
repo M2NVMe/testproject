@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:testproject/Reuses/myButton.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -10,7 +13,7 @@ class Profile extends StatelessWidget {
       body: Column(
         children: [
           Expanded(child: Container()),
-          Text("Ini profile"),
+          myButton(textButton: Text("LOGOUT"), backgroundColor: Colors.blueGrey, textColor: Colors.white, radius: 8, elevation: 0, onPressed: () {exit(0);}),
           Expanded(child: Container()),
         ],
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:testproject/Controllers/Database/FavoritesDatabase.dart';
+import 'package:testproject/Controllers/RegularControllers/sportscontroller.dart';
 import 'package:testproject/Reuses/myButton.dart';
 
 class Favorites extends StatelessWidget {
@@ -42,7 +43,9 @@ class Favorites extends StatelessWidget {
                             onPressed: () async {
                               if (item['id'] != null) {
                                 await datas.deleteFav(item['id']);
-                                await datas.loadFavorites(); // Reload favorites
+                                await datas.loadFavorites();
+                                final sportsController = Get.find<SportsController>();
+                                sportsController.update();
                                 Get.snackbar(
                                   'Removed from Favorites',
                                   item['title'],

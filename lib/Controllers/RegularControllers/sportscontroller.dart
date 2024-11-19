@@ -36,16 +36,14 @@ class SportsController extends GetxController {
       await dbHelper.deleteFav(fav['id']);
       Get.snackbar('Removed from Favorites', item['title']);
     } else {
-      // Add item to database
       await dbHelper.addFav({
         'image': item['image'],
         'title': item['title'],
         'description': item['description'],
       });
-      await dbHelper.loadFavorites(); // Refresh the favorites list
       Get.snackbar('Added to Favorites', item['title']);
     }
+    await dbHelper.loadFavorites(); // Always reload the favorites list
+    update(); // Notify listeners
   }
-
-
 }

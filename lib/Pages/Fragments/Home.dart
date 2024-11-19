@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:testproject/Controllers/Database/FavoritesDatabase.dart';
 import 'package:testproject/Controllers/RegularControllers/sportscontroller.dart';
 import 'package:testproject/Pages/Detailed.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
-  final SportsController controller = Get.put(SportsController());
 
   @override
   Widget build(BuildContext context) {
+    final SportsController controller = Get.put(SportsController());
+    final DatabaseHelper datas = Get.put(DatabaseHelper());
     return Scaffold(
       body: Column(
         children: [
